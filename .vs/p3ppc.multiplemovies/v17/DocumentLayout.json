@@ -1,0 +1,112 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|c:\\users\\airin\\onedrive\\desktop\\mod making\\temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\mod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|solutionrelative:p3ppc.multiplemovies\\mod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|c:\\users\\airin\\onedrive\\desktop\\mod making\\temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\modconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|solutionrelative:p3ppc.multiplemovies\\modconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|c:\\users\\airin\\onedrive\\desktop\\mod making\\temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|solutionrelative:p3ppc.multiplemovies\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.totalkotoneoverhaul\\p3ppc.totalkotoneoverhaul\\Mod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|c:\\users\\airin\\onedrive\\desktop\\mod making\\temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\native.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08BF47D5-AF49-405F-BEDF-8F610174C267}|p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj|solutionrelative:p3ppc.multiplemovies\\native.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Native.cs",
+              "DocumentMoniker": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\Native.cs",
+              "RelativeDocumentMoniker": "p3ppc.multiplemovies\\Native.cs",
+              "ToolTip": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\Native.cs",
+              "RelativeToolTip": "p3ppc.multiplemovies\\Native.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAjwC8AAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T23:22:55.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ModConfig.json",
+              "DocumentMoniker": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\ModConfig.json",
+              "RelativeDocumentMoniker": "p3ppc.multiplemovies\\ModConfig.json",
+              "ToolTip": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\ModConfig.json",
+              "RelativeToolTip": "p3ppc.multiplemovies\\ModConfig.json",
+              "ViewState": "AQIAAGgAAAAAAAAAAADwv4QAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-16T23:22:09.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\Utils.cs",
+              "RelativeDocumentMoniker": "p3ppc.multiplemovies\\Utils.cs",
+              "ToolTip": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\Utils.cs",
+              "RelativeToolTip": "p3ppc.multiplemovies\\Utils.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T22:49:21.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Mod.cs",
+              "DocumentMoniker": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\Mod.cs",
+              "RelativeDocumentMoniker": "p3ppc.multiplemovies\\Mod.cs",
+              "ToolTip": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\Mod.cs",
+              "RelativeToolTip": "p3ppc.multiplemovies\\Mod.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAAwFEAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T22:31:45.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Mod.cs",
+              "DocumentMoniker": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.totalkotoneoverhaul\\p3ppc.totalkotoneoverhaul\\Mod.cs",
+              "RelativeDocumentMoniker": "..\\p3ppc.totalkotoneoverhaul\\p3ppc.totalkotoneoverhaul\\Mod.cs",
+              "ToolTip": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.totalkotoneoverhaul\\p3ppc.totalkotoneoverhaul\\Mod.cs",
+              "RelativeToolTip": "..\\p3ppc.totalkotoneoverhaul\\p3ppc.totalkotoneoverhaul\\Mod.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T22:32:21.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "RRnRATN8KyI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\airin\\OneDrive\\Desktop\\Mod Making\\Temp 2\\p3ppc.multiplemovies\\p3ppc.multiplemovies\\p3ppc.multiplemovies.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.hooks.definitions\\1.11.0\\reloaded.hooks.definitions.1.11.0.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.memory\\9.4.2\\reloaded.memory.9.4.2.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.memory.sigscan\\3.1.9\\reloaded.memory.sigscan.3.1.9.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.memory.sigscan.definitions\\1.1.1\\reloaded.memory.sigscan.definitions.1.1.1.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.memory.sigscan.reloadedii.interfaces\\1.2.0\\reloaded.memory.sigscan.reloadedii.interfaces.1.2.0.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.mod.interfaces\\2.4.0\\reloaded.mod.interfaces.2.4.0.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\reloaded.sharedlib.hooks\\1.9.0\\reloaded.sharedlib.hooks.1.9.0.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\airin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}
