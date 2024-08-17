@@ -3,7 +3,7 @@
     "ModName": "Multiple Movies",
     "ModAuthor": "Dexxtrip",
     "ModVersion": "1.0.0",
-    "ModDescription": "Adds support for additional movies to P3P",
+    "ModDescription": "Description",
     "ModDll": "p3ppc.multiplemovies.dll",
     "ModIcon": "Preview.png",
     "ModR2RManagedDll32": "x86/p3ppc.multiplemovies.dll",
@@ -18,15 +18,6 @@
     "PluginData": {
         "GitHubDependencies": {
             "IdToConfigMap": {
-                "crifs.v2.hook": {
-                    "Config": {
-                        "UserName": "Sewer56",
-                        "RepositoryName": "CriFs.V2.Hook.ReloadedII",
-                        "UseReleaseTag": false,
-                        "AssetFileName": "Mod.zip"
-                    },
-                    "ReleaseMetadataName": "CriFs.V2.Hook.ReleaseMetadata.json"
-                },
                 "p5rpc.modloader": {
                     "Config": {
                         "UserName": "Sewer56",
@@ -72,6 +63,15 @@
                     },
                     "ReleaseMetadataName": "CriFs.V2.Hook.Awb.ReleaseMetadata.json"
                 },
+                "crifs.v2.hook": {
+                    "Config": {
+                        "UserName": "Sewer56",
+                        "RepositoryName": "CriFs.V2.Hook.ReloadedII",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "CriFs.V2.Hook.ReleaseMetadata.json"
+                },
                 "reloaded.universal.fileemulationframework.bmd": {
                     "Config": {
                         "UserName": "Sewer56",
@@ -89,15 +89,6 @@
                         "AssetFileName": "Mod.zip"
                     },
                     "ReleaseMetadataName": "BF.File.Emulator.ReleaseMetadata.json"
-                },
-                "reloaded.universal.fileemulationframework.spd": {
-                    "Config": {
-                        "UserName": "Sewer56",
-                        "RepositoryName": "FileEmulationFramework",
-                        "UseReleaseTag": false,
-                        "AssetFileName": "Mod.zip"
-                    },
-                    "ReleaseMetadataName": "SPD.File.Emulator.ReleaseMetadata.json"
                 },
                 "reloaded.universal.fileemulationframework.awb": {
                     "Config": {
@@ -118,6 +109,10 @@
                     "ReleaseMetadataName": "Reloaded.Universal.FileEmulationFramework.ReleaseMetadata.json"
                 }
             }
+        },
+        "GameBanana": {
+            "ItemType": "Mod",
+            "ItemId": 535842
         }
     },
     "IsUniversalMod": false,

@@ -1,5 +1,4 @@
 ﻿using p3ppc.multiplemovies.Configuration;
-using Reloaded.Hooks.Definitions;
 
 namespace p3ppc.multiplemovies.Template
 {
@@ -8,8 +7,6 @@ namespace p3ppc.multiplemovies.Template
     /// </summary>
     public class ModBase
     {
-
-        private IHook<SetupMovieDelegate> _setupMovieHook;
         /// <summary>
         /// Returns true if the suspend functionality is supported, else false.
         /// </summary>
