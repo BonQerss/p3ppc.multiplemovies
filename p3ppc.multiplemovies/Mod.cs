@@ -1,37 +1,25 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using p3ppc.multiplemovies.Configuration;
 using p3ppc.multiplemovies.Template;
 using Reloaded.Hooks.Definitions;
-using Reloaded.Memory.Sigscan;
-using Reloaded.Memory.SigScan;
-using Reloaded.Hooks;
-using Reloaded.Hooks.ReloadedII.Interfaces;
-using Reloaded.Mod.Interfaces;
-using Reloaded.Hooks.Definitions;
-using Reloaded.Hooks.Definitions.Enums;
-using Reloaded.Hooks.ReloadedII.Interfaces;
-using Reloaded.Memory;
-using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
-using System.Diagnostics;
+using CriFs.V2.Hook.Interfaces;
 using p3ppc.totalkotoneoverhaul;
-using System.Text;
-using System.Runtime.CompilerServices;
 
 namespace p3ppc.multiplemovies
 {
-    /// <summary>
-    /// Your mod logic goes here.
-    /// </summary>
     public unsafe class Mod : ModBase // <= Do not Remove.
     {
         private delegate nuint IntroDelegate(IntroStruct* introStruct);
 
-        private delegate nuint MoviePlayDelegate(TaskStruct* TaskStruct, string param2, nuint param3, nuint* param_4, nuint param_5,
-         nuint param_6);
+        private delegate TaskStruct* PlayMoviePlayDelegate(IntroStruct* introStruct, string moviePath, nuint movieThing1, int param4, int param5, nuint movieThing2);
 
-        private int _IntroCount;
         private string currentMovie;
 
         [StructLayout(LayoutKind.Explicit)]
@@ -62,42 +50,20 @@ namespace p3ppc.multiplemovies
             TitleScreen = 7
         }
 
-        /// <summary>
-        /// Provides access to the mod loader API.
-        /// </summary>
         private readonly IModLoader _modLoader;
-
-        /// <summary>
-        /// Provides access to the Reloaded.Hooks API.
-        /// </summary>
-        /// <remarks>This is null if you remove dependency on Reloaded.SharedLib.Hooks in your mod.</remarks>
         private readonly Reloaded.Hooks.Definitions.IReloadedHooks? _hooks;
-
-        /// <summary>
-        /// Provides access to the Reloaded logger.
-        /// </summary>
         private readonly ILogger _logger;
-
-        /// <summary>
-        /// Entry point into the mod, instance that created this class.
-        /// </summary>
         private readonly IMod _owner;
-
-        /// <summary>
-        /// Provides access to this mod's configuration.
-        /// </summary>
         private Config _configuration;
-
-        /// <summary>
-        /// The configuration of the currently executing mod.
-        /// </summary>
         private readonly IModConfig _modConfig;
 
-
         private IHook<IntroDelegate> _introHook;
-        private MoviePlayDelegate _moviePlay;
+        private PlayMoviePlayDelegate _moviePlay;
         private nuint _movieThing1;
         private nuint* _movieThing2;
+        private List<string> _movieFiles = new List<string>();
+        private string movieDir;
+        private int _introCount = 0;
 
         public Mod(ModContext context)
         {
@@ -119,54 +85,82 @@ namespace p3ppc.multiplemovies
 
             Utils.SigScan("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 41 56 48 83 EC 40 49 89 CE 4C 89 CE", "_moviePlay", address =>
             {
-                _moviePlay = _hooks.CreateWrapper<MoviePlayDelegate>(address, out _);
+                _moviePlay = _hooks.CreateWrapper<PlayMoviePlayDelegate>(address, out _);
             });
 
-
-            Utils.SigScan("48 8B 05 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? 48 89 44 24 ??", "SuperMegaUltra Important", result =>
+            Utils.SigScan("48 8B 05 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? 48 89 44 24 ??", "PlayMovieArgs", address =>
             {
-                _movieThing1 = Utils.GetGlobalAddress(Utils.BaseAddress + 10);
+                _movieThing1 = Utils.GetGlobalAddress(address + 10);
 
-                _movieThing2 = (nuint*)Utils.GetGlobalAddress(Utils.BaseAddress + 3);
+                _movieThing2 = (nuint*)Utils.GetGlobalAddress(address + 3);
             });
 
-           
-
-            // For more information about this template, please see
-            // https://reloaded-project.github.io/Reloaded-II/ModTemplate/
-
-        // If you want to implement e.g. unload support in your mod,
-        // and some other neat features, override the methods in ModBase.
-
-        // TODO: Implement some mod logic
+            _modLoader.ModLoading += ModLoading;
         }
 
+        private void ModLoading(IModV1 mod, IModConfigV1 modConfig)
+        {
+            var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
+            if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
+            {
+                _logger.WriteLine("Something in CriFS failed! Normal files will not load properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            if (modConfig.ModDependencies.Contains(_modConfig.ModId))
+            {
+                string modDir = _modLoader.GetDirectoryForModId(modConfig.ModId);
+
+                // Correctly set the movieDir path
+                movieDir = Path.Combine(modDir, "movieDir", "USM", "umd1.cpk", "data");
+
+                // Check if the directory exists before trying to enumerate files
+                if (Directory.Exists(movieDir))
+                {
+                    // Get only the filenames, not the full paths
+                    _movieFiles.AddRange(Directory.GetFiles(movieDir, "*.usm").Select(Path.GetFileName)); 
+                    criFsApi.AddProbingPath("movieDir/USM");// Add full movieDir as probing path
+                }
+                else
+                {
+                    _logger.WriteLine($"Directory does not exist: {movieDir}");
+                }
+            }
+        }
 
         private nuint Intro(IntroStruct* introStruct)
         {
             var stateInfo = introStruct->StateInfo;
-            
 
             if (stateInfo->state == IntroState.MovieStart)
             {
-                if (_IntroCount == 0)
+                if (_movieFiles.Count == 0)
                 {
-                    currentMovie = "data/sound/usm/P3OPMOV_P3P.usm";
-                }
-                else if (_IntroCount == 1)
-                {
-                    currentMovie = "data/sound/usm/P3OPMV_P3PB.usm";
+                    _logger.WriteLine("No movie files found, using default movie.");
+                    currentMovie = Path.Combine("data", "sound", "usm", "P3OPMOV_P3P.usm");
                 }
                 else
                 {
-                    currentMovie = "data/sound/usm/P3OPMV_P3PC.usm";
+                    if (_configuration.randomize)
+                    {
+                        _introCount = new Random().Next(0, _movieFiles.Count);
+                    }
+                    else
+                    {
+                        _introCount = (_introCount + 1) % _movieFiles.Count;
+                    }
+                    currentMovie = _movieFiles[_introCount];
                 }
 
-               var taskHandle = _moviePlay(stateInfo->Task, currentMovie, _movieThing1, (nuint*)0, 0, (nuint)_movieThing2);
+                // Combine with movie directory path if needed for logging
+                string fullMoviePath = Path.Combine(movieDir, currentMovie);
+
+                _logger.WriteLine($"Playing movie: {currentMovie} (Full path: {fullMoviePath})");
+
+                var taskHandle = _moviePlay(introStruct, currentMovie, _movieThing1, 0, 0, *_movieThing2);
 
                 stateInfo->Task = (TaskStruct*)taskHandle;
-                _IntroCount = (_IntroCount + 1) % 3;
-                stateInfo->state = IntroState.MovieStart;
+                stateInfo->state = IntroState.MoviePlaying;
                 return 0;
             }
 
@@ -176,8 +170,6 @@ namespace p3ppc.multiplemovies
         #region Standard Overrides
         public override void ConfigurationUpdated(Config configuration)
         {
-            // Apply settings from configuration.
-            // ... your code here.
             _configuration = configuration;
             _logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
         }
