@@ -34,8 +34,13 @@ namespace p3ppc.multiplemovies.Configuration
 
         [DisplayName("Include Default Movies")]
         [Description("Decides whether or not default movies are played.")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool IncludeDefaultMovies { get; set; } = false;
+
+        [DisplayName("New Movies First")]
+        [Description("Plays new movies first, then original movies once all have played. Requires Include Default Movies")]
+        [DefaultValue(false)]
+        public bool NewFirst { get; set; } = false;
 
     }
 

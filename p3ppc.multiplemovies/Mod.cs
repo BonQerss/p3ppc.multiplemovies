@@ -63,7 +63,7 @@ namespace p3ppc.multiplemovies
         private nuint* _movieThing2;
         private List<string> _movieFiles = new List<string>();
         private string movieDir;
-        private int _introCount = 0;
+        private int _introCount = -1;
 
         public Mod(ModContext context)
         {
@@ -76,7 +76,6 @@ namespace p3ppc.multiplemovies
 
             Utils.Initialise(_logger, _configuration, _modLoader);
 
-            Debugger.Launch();
 
             Utils.SigScan("48 89 5C 24 ?? 57 48 83 EC 30 48 8B F9 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B 5F ?? 48 63 03", "Intro", address =>
             {
@@ -96,7 +95,22 @@ namespace p3ppc.multiplemovies
             });
 
             _modLoader.ModLoading += ModLoading;
+
+            if (_configuration.IncludeDefaultMovies)
+            {
+                _movieFiles.Add("P3OPMV_P3P.usm");
+                _movieFiles.Add("P3OPMV_P3PB.usm");
+            }
+
+            if (_configuration.IncludeDefaultMovies)
+            {
+                if (_configuration.NewFirst)
+                {
+                    _introCount += 2;
+                }
+            }
         }
+      
 
         private void ModLoading(IModV1 mod, IModConfigV1 modConfig)
         {
@@ -106,6 +120,8 @@ namespace p3ppc.multiplemovies
                 _logger.WriteLine("Something in CriFS failed! Normal files will not load properly!", System.Drawing.Color.Red);
                 return;
             }
+
+            
 
             if (modConfig.ModDependencies.Contains(_modConfig.ModId))
             {
@@ -125,7 +141,11 @@ namespace p3ppc.multiplemovies
                 {
                     _logger.WriteLine($"Directory does not exist: {movieDir}");
                 }
+
+                
             }
+
+
         }
 
         private nuint Intro(IntroStruct* introStruct)
@@ -147,9 +167,22 @@ namespace p3ppc.multiplemovies
                     }
                     else
                     {
+
                         _introCount = (_introCount + 1) % _movieFiles.Count;
                     }
+
+                    foreach (string MovieFile in _movieFiles)
+                    {
+                        _logger.WriteLine($"[MultipleMovies] {MovieFile}");
+                    }
+
+
                     currentMovie = _movieFiles[_introCount];
+                }
+
+                if (currentMovie == "P3OPMV_P3P.usm" || currentMovie == "P3OPMV_P3PB.usm")
+                {
+                    currentMovie = Path.Combine( "sound", "usm", currentMovie);
                 }
 
                 // Combine with movie directory path if needed for logging
